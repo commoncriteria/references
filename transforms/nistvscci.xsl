@@ -56,9 +56,10 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 			</div>
 			<div class="intro">
 			This table presents the security controls from NIST 800-53
-			next to their form in the DISA FSO CCI list.
+			next to their rewritten form in the DISA FSO CCI list.
 			This table is designed to foster conversation about how to use the
-			security controls.  Topics include:
+			security controls.  
+			<br/>Discussion topics include:
 			<ul>
 				<li>whether association with a control implies partial or complete satisfaction</li>
 				<li>level of granularity needed by DoD</li>
@@ -121,7 +122,7 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 			<xsl:value-of select="$num_for_statement"/> 
 		</td>
 		<xsl:choose>
-			<xsl:when test="../../../ce:statement">
+			<xsl:when test="../../../ce:statement and ../../ce:statement">
 				<td class="statementstyleindent2"><xsl:value-of select="ce:description"/> </td>
 			</xsl:when>
 			<xsl:when test="../../ce:statement">

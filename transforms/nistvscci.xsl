@@ -22,7 +22,8 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 			tr.controlenhancementstyle 	{  border-bottom: 1px solid lightgray; font-size: 16pt; vertical-align: bottom; }
 			td.controlenhancementstyle 	{ padding-top: 2em; }
 			tr.statementstyle			{ font-size: 12pt; vertical-align: top; } 
-			td.statementstyle			{ border: none; font-size: 12pt; vertical-align: top; padding-bottom: .5em; } 
+			td.statementstyle			{ border: none; padding-bottom: .5em; padding-right: 5em; } 
+			td.statementstyleindent		{ border: none; padding-bottom: .5em; padding-right: 5em; padding-left:3em; } 
 			tr.controlstyle			 	{ border-bottom: 2px solid lightgray; }
 			td.controlstyle 			{ font-size: 18pt; font-weight:bold; vertical-align: top; padding-top: 2em; }
 			td.nowrap { white-space:nowrap; font-size: 12pt; vertical-align: top; }
@@ -48,21 +49,25 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 
 			</style>
 			<title>NIST 800-53 Analysis</title>
-
 			<div class="title">
 			Side-by-side Presentation of<br/>
 			<i>NIST Special Publication 800-53 Revision 4</i><br/> and the <br/><i>DISA FSO Control Correlation Identifier (CCI) List</i>
 			</div>
 			<div class="intro">
-			This table presents the security controls from NIST 800-53 
+			This table presents the security controls from NIST 800-53
 			next to their form in the DISA FSO CCI list.
-
 			This table is designed to foster conversation about how to use the
-			security controls.  Topics include the level of granularity needed by DoD,
-			whether a claim of implementing a control implies satisfaction or merely
-			association, and how the controls relate to writing both security
+			security controls.  Topics include:
+			<ul>
+				<li>whether association with a control implies partial or complete satisfaction</li>
+				<li>level of granularity needed by DoD</li>
+				<li>how controls relate to writing both security
 			functional requirements (expressed in Protection Profiles) and configuration
-			requirements (expressed in STIGs) for commercial products.
+			requirements (expressed in STIGs) for commercial products.</li>  
+			</ul>
+			Appendix H of NIST 800-53 describes high-level intentions while
+			this table is designed to facilitate coordination and implementation
+			between organizations.
 			</div>
 
 			</head>
@@ -114,7 +119,14 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 		<td class="nowrap">
 			<xsl:value-of select="$num_for_statement"/> 
 		</td>
-		<td class="statementstyle"><xsl:value-of select="ce:description"/> </td>
+		<xsl:choose>
+			<xsl:when test="../../ce:statement">
+				<td class="statementstyleindent"><xsl:value-of select="ce:description"/> </td>
+			</xsl:when>
+			<xsl:otherwise>
+				<td class="statementstyle"><xsl:value-of select="ce:description"/> </td>
+			</xsl:otherwise>
+		</xsl:choose>
 		<td><table>
 			<xsl:call-template name="insert_cci">
 				<xsl:with-param name="nist_id" select="$numbertrans" />

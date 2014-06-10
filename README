@@ -1,4 +1,13 @@
 references
 ==========
 
-References relevant to requirements captured in Protection Profiles
+This project is designed to present references relevant 
+to requirements captured in Protection Profiles
+
+
+The Makefile expects the freely-available Saxon XSLT
+processor to be installed.  It is available from:
+	 http://sourceforge.net/projects/saxon/files/
+
+The Makefile expects a new "saxon" directory to be created 
+in the home directory and for the saxon9he.jar file to be in it.

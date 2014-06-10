@@ -1,0 +1,5 @@
+# ignore the following file type
+# (and also make it possible to commit this directory!)
+*.html
+*.xml
+*.pdf

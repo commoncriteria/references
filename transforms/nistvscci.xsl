@@ -24,6 +24,7 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 			tr.statementstyle			{ font-size: 12pt; vertical-align: top; } 
 			td.statementstyle			{ border: none; padding-bottom: .5em; padding-right: 5em; } 
 			td.statementstyleindent		{ border: none; padding-bottom: .5em; padding-right: 5em; padding-left:3em; } 
+			td.statementstyleindent2		{ border: none; padding-bottom: .5em; padding-right: 5em; padding-left:6em; } 
 			tr.controlstyle			 	{ border-bottom: 2px solid lightgray; }
 			td.controlstyle 			{ font-size: 18pt; font-weight:bold; vertical-align: top; padding-top: 2em; }
 			td.nowrap { white-space:nowrap; font-size: 12pt; vertical-align: top; }
@@ -120,6 +121,9 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 			<xsl:value-of select="$num_for_statement"/> 
 		</td>
 		<xsl:choose>
+			<xsl:when test="../../../ce:statement">
+				<td class="statementstyleindent2"><xsl:value-of select="ce:description"/> </td>
+			</xsl:when>
 			<xsl:when test="../../ce:statement">
 				<td class="statementstyleindent"><xsl:value-of select="ce:description"/> </td>
 			</xsl:when>

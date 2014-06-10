@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="../transforms/nistvscci.xsl"?>
 <controls:controls xmlns="http://scap.nist.gov/schema/sp800-53/2.0"
     xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
     xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

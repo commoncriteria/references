@@ -11,3 +11,14 @@ processor to be installed.  It is available from:
 
 The Makefile expects a new "saxon" directory to be created 
 in the home directory and for the saxon9he.jar file to be in it.
+
+
+
+
+Here are some utility scripts, to verify correspondence:
+
+Getting the CCIs in the CCI list:
+$ grep "CCI-" U_CCI_List.xml | cut -c 17-26 | sort -n
+
+Getting the CCIs from the comparison document (which are only for rev 4):
+$ grep "\(CCI-"  output/nistvscci.html | cut -c 29-38 | sort -n

@@ -88,7 +88,6 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 
 
 	<xsl:template match="controls:control">
-		<!-- if the following statement has no number, join the rows -->
 		<tr class="controlstyle">
 		<td class="controlstyle"><xsl:value-of select="ce:number"/></td>
 		<td class="controlstyle">
@@ -116,7 +115,9 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 		<xsl:variable name="numbernodots"><xsl:value-of select="normalize-space(translate($num_for_statement,'.',' '))"/></xsl:variable>
 		<!-- number then lowercase gets a space in between -->
 		<xsl:variable name="numbertrans" select="replace($numbernodots, '([0-9])([a-z])','$1 $2')" />
-		<!-- could do count(key('','') to do a rowspan here if needed to get in flat table) -->
+		<!-- two parens next to each other gets a space -->
+		<xsl:variable name="controlcciform" select="replace($numbertrans, '\)\(',') (')" />
+		<!-- "controlcciform" should now be in the form expected in the CCI list -->
 		<tr class="statementstyle">
 		<td class="nowrap">
 			<xsl:value-of select="$num_for_statement"/> 
@@ -134,7 +135,7 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 		</xsl:choose>
 		<td><table>
 			<xsl:call-template name="insert_cci">
-				<xsl:with-param name="nist_id" select="$numbertrans" />
+				<xsl:with-param name="nist_id" select="$controlcciform" />
 			</xsl:call-template>
 		</table></td>
 		</tr>
@@ -171,7 +172,6 @@ xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0"
 			<td>
 			<xsl:value-of select="$matched_cci/cci:definition"/>
 			</td>
-
 			</tr>
 			</xsl:for-each>
 		</xsl:for-each>

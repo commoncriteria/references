@@ -9,14 +9,14 @@ branches:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq make unzip xsltproc
+  - sudo apt-get install -qq make openjdk-8-jdk unzip xsltproc
 
 before_script:
   - wget -O saxon.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/9.8/SaxonHE9-8-0-4J.zip
   - unzip saxon.zip -d ~/saxon
 
 #script:
-#  - make
+  - make
 #  - git clone https://github.com/commoncriteria/commoncriteria.github.io.git
 #  - mkdir -p commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)
 #  - cp -r output/* commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)

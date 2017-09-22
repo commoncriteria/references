@@ -21,7 +21,8 @@ before_script:
   - mkdir -p commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)
   - cp -r output/* commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)
   - cd commoncriteria.github.io
-  - git add --all && git commit -m "Deploying changes"
+  - git add --all 
+  - git diff-index --quiet HEAD || git commit -m "Deploying changes"
   - git pull --rebase
   - cd -
   

@@ -19,6 +19,7 @@ before_script:
   - make
   - git clone https://github.com/commoncriteria/commoncriteria.github.io.git
   - mkdir -p commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)
+  - rm -rf commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)/*
   - cp -r output/* commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)
   - cd commoncriteria.github.io
   - git add --all 

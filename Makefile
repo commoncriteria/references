@@ -1,7 +1,7 @@
 IN = input
 OUT = output
 TRANS = transforms
-SAXON_JAR ?= ~/saxon/saxon9he.jar
+SAXON_JAR ?= ${PWD}/saxon/saxon9he.jar
 
 all: nistvscci
 
